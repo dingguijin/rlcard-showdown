@@ -93,6 +93,10 @@ function PvEDoudizhuDemoView() {
             .join('');
     };
 
+    function timeout(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
     const proceedNextTurn = async (playingCard, rankOnly = true) => {
         // take played three landlord card out
         if (playerInfo[gameState.currentPlayer].role === 'landlord'
@@ -137,10 +141,9 @@ function PvEDoudizhuDemoView() {
         }
 
         // delay play for api player
-            /* if (gameState.currentPlayer !== mainPlayerId) {
-                await timeout();
-            }
-            */
+        if (gameState.currentPlayer !== mainPlayerId) {
+            await timeout(3000);
+        }
         
         setToggleFade('fade-out');
 
