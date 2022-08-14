@@ -157,14 +157,6 @@ export const fullDoudizhuDeck = [
     'C5',
     'H5',
     'D5',
-    'S4',
-    'C4',
-    'H4',
-    'D4',
-    'S3',
-    'C3',
-    'H3',
-    'D3',
 ];
 
 export const fullDoudizhuDeckIndex = {
@@ -214,14 +206,6 @@ export const fullDoudizhuDeckIndex = {
     C5: 11,
     H5: 10,
     D5: 9,
-    S4: 8,
-    C4: 7,
-    H4: 6,
-    D4: 5,
-    S3: 4,
-    C3: 3,
-    H3: 2,
-    D3: 1,
 };
 
 export function sortDoudizhuCards(cards, ascending = false) {

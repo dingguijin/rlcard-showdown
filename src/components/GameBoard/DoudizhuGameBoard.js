@@ -320,15 +320,9 @@ class DoudizhuGameBoard extends React.Component {
             return element.id === bottomId;
         });
         const bottomIdx = found ? found.index : -1;
-        const rightIdx = bottomIdx >= 0 ? (bottomIdx + 1) % 3 : -1;
-        const leftIdx = rightIdx >= 0 ? (rightIdx + 1) % 3 : -1;
-        let rightId = -1;
+        const leftIdx = bottomIdx >= 0 ? (bottomIdx + 1) % 2 : -1;
         let leftId = -1;
-        if (rightIdx >= 0 && leftIdx >= 0) {
-            found = this.props.playerInfo.find((element) => {
-                return element.index === rightIdx;
-            });
-            if (found) rightId = found.id;
+        if (leftIdx >= 0) {
             found = this.props.playerInfo.find((element) => {
                 return element.index === leftIdx;
             });
@@ -368,19 +362,7 @@ class DoudizhuGameBoard extends React.Component {
                         </div>
                         <div className="played-card-area">{leftIdx >= 0 ? this.playerDecisionArea(leftIdx) : ''}</div>
                     </div>
-                    <div id={'right-player'}>
-                        <div className="player-main-area">
-                            <div className="player-info">{this.computePlayerPortrait(rightId, rightIdx)}</div>
-                            {rightIdx >= 0 ? (
-                                this.computeSideHand(this.props.hands[rightIdx])
-                            ) : (
-                                <div className="player-hand-placeholder">
-                                    <span>{t('waiting...')}</span>
-                                </div>
-                            )}
-                        </div>
-                        <div className="played-card-area">{rightIdx >= 0 ? this.playerDecisionArea(rightIdx) : ''}</div>
-                    </div>
+
                     <div id={'bottom-player'}>
                         <div className="played-card-area">
                             {bottomIdx >= 0 ? this.playerDecisionArea(bottomIdx) : ''}
@@ -413,16 +395,6 @@ class DoudizhuGameBoard extends React.Component {
                         }}
                     >
                         <Button
-                            onClick={() => this.props.handleSelectRole('landlord_up')}
-                            style={{ width: '225px', justifyContent: 'space-evenly' }}
-                            variant="contained"
-                            color="primary"
-                            startIcon={<img src={Peasant_wName} alt="Peasant" width="48px" height="48px" />}
-                        >
-                            {t('doudizhu.play_as_peasant')}
-                            <br />({t('doudizhu.landlord_up')})
-                        </Button>
-                        <Button
                             onClick={() => this.props.handleSelectRole('landlord')}
                             style={{
                                 width: '225px',
@@ -435,6 +407,7 @@ class DoudizhuGameBoard extends React.Component {
                             startIcon={<img src={Landlord_wName} alt="Peasant" width="48px" height="48px" />}
                         >
                             {t('doudizhu.play_as_landlord')}
+                            <br />({t('doudizhu.farmer_remain_1')})
                         </Button>
                         <Button
                             onClick={() => this.props.handleSelectRole('landlord_down')}
@@ -444,41 +417,10 @@ class DoudizhuGameBoard extends React.Component {
                             startIcon={<img src={Peasant_wName} alt="Peasant" width="48px" height="48px" />}
                         >
                             {t('doudizhu.play_as_peasant')}
-                            <br />({t('doudizhu.landlord_down')})
+                            <br />({t('doudizhu.farmer_remain_1')})
                         </Button>
                     </Layout.Row>
-                )}
-                {this.props.gamePlayable && this.props.gameStatus === 'localeSelection' && (
-                    <Layout.Row
-                        type="flex"
-                        style={{
-                            position: 'absolute',
-                            top: 0,
-                            height: '100%',
-                            width: '100%',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <Button
-                            onClick={() => this.props.handleLocaleChange('zh')}
-                            style={{ width: '225px', padding: '15px' }}
-                            variant="contained"
-                            color="primary"
-                        >
-                            中文开始游戏
-                        </Button>
-                        <Button
-                            onClick={() => this.props.handleLocaleChange('en')}
-                            style={{ width: '225px', padding: '15px', marginTop: '20px' }}
-                            variant="contained"
-                            color="primary"
-                        >
-                            Start Game in English
-                        </Button>
-                    </Layout.Row>
-                )}
+                )}                
             </div>
         );
     }

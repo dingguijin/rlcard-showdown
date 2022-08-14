@@ -7,11 +7,12 @@
     "reset": "重置",
 
     "doudizhu": {
+        "farmer_remain_1": "地主让一张",
         "ai_hand_faceup": "显示AI手牌",
         "play_as_landlord": "扮演地主",
         "play_as_peasant": "扮演农民",
-        "landlord_up": "地主上家",
-        "landlord_down": "地主下家",
+        "landlord_up": "农民",
+        "landlord_down": "农民",
         "peasants_win": "农民胜利!",
         "landlord_win": "地主胜利!",
         "only_choice": "唯一选择",

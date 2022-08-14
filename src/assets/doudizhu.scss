@@ -117,8 +117,9 @@
 
     #left-player {
         position: absolute;
-        left: 10px;
         top: 10px;
+        left: 50%;
+        margin-left: -290px;
 
         .player-main-area {
             width: 300px;
